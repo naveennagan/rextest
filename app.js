@@ -18,7 +18,7 @@ app.get('/set', function(req, res) {
       notifications.push(user);
 	}
 	else{
-	 notifications=0;	
+	 notifications=[];	
 	}
 	res.json({"users": notifications});
 });
