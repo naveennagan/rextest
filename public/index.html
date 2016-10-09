@@ -1,0 +1,119 @@
+<html>
+<head>
+<title>Guns And the Drums</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
+<link rel="stylesheet" type="text/css" href="bell.css"> 
+<link rel="stylesheet" type="text/css" href="app.css"> 
+</head>
+<body>
+
+<div class="page">
+<div class="header">
+<div class="belltest">
+ 
+</div>
+</div>
+<!--<div class='container'>
+<div class='notification'>
+  3
+</div>
+<div class='bubble'>
+<div class='left'></div>
+<div class='right'></div>
+
+</div>
+<div class='circle'></div>
+
+</div> -->
+<div id="menu1" class='menu'>
+  <div class="menu-item menu-header">
+    
+     <p>Notifications</p>
+  </div>  
+  <div class="menu-item">
+     <img class="img-circle" src="images/geralt.jpg">
+     <p>Geralt has pinged you</p>
+  </div>
+  <div class="menu-item">
+    <img class="img-circle" src="images/ciri.jpg">
+    <p>Ciri has pinged you</p>
+  </div>
+</div>
+<div class="row">
+        <div class="col s4 m3">
+          <div class="card">
+            <div class="card-image">
+              <img src="images/geralt.jpg">
+              <span class="card-title">Geralt</span>
+            </div>            
+            <div class="card-action">
+              <a class="ping-action" data-char="geralt" href="#">Ping</a>
+            </div>
+          </div>
+        </div>
+		<div class="col s4 m3">
+          <div class="card">
+            <div class="card-image">
+              <img src="images/vesem.jpg">
+              <span class="card-title">Vesemeir</span>
+            </div>            
+            <div class="card-action">
+              <a class="ping-action" data-char="vesem" href="#">Ping</a>
+            </div>
+          </div>
+        </div>
+		<div class="col s4 m3">
+          <div class="card">
+            <div class="card-image">
+              <img src="images/yennefer.jpg">
+              <span class="card-title">Yennefer</span>
+            </div>            
+            <div class="card-action">
+              <a class="ping-action" data-char="yennefer" href="#">Ping</a>
+            </div>
+          </div>
+        </div>
+		<div class="col s4 m3">
+          <div class="card">
+            <div class="card-image">
+              <img src="images/ciri.jpg">
+              <span class="card-title">Ciri</span>
+            </div>            
+            <div class="card-action">
+              <a class="ping-action" data-char="ciri" href="#">Ping</a>
+            </div>
+          </div>
+        </div>
+      </div>
+</div>
+
+<script src="lib/jquery-3.1.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
+<script src="bell.js"></script>
+<script>
+$(document).ready(function(){
+$('a.ping-action').on('click',function(e){
+    var user=$(this).data("char");
+	console.log(user);
+    $.ajax({ url: '/set', 
+	data:"user="+user,success: function(data) {
+            console.log(data);
+       }, dataType: "json"});
+})
+
+
+$('.belltest').bell(
+  {
+   'color':'#A0B6C3',
+   'thickness':3,  
+    onclick:function(){
+       $('#menu1').toggleClass('menu-visible');
+      },
+	'notifyurl':'/get'
+  }
+  );
+});
+</script>
+</body>
+
+</html>
