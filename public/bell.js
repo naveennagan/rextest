@@ -31,6 +31,8 @@ $(this).click(function(){
 			}
 			else{
 				$(that).find('.bell-container .bell-circle').removeClass('wobble');
+				$(that).find('.bell-notification').text(data.nots);
+				notifications=data.nots;
 			}
             
        }, dataType: "json", complete: poll });
